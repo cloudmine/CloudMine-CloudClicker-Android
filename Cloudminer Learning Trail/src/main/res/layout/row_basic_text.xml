@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rowTextView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/rankValue"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/list_rank"
+        android:gravity="center"
+        android:text="1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#59595c"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nameValue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:text="Joe Smith"
+        android:textColor="#f5f6f6"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/clicksValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="580 Clicks"
+        android:textColor="#f5f6f6"
+        android:textSize="18sp" />
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/banner_corners"
+    android:layout_width="270px"
+    android:layout_height="270px">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100px"
+        android:background="@drawable/bg_backdrop">
+
+        <ImageView
+            android:id="@+id/coreTitle"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/lg_my_statistics" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/coreContent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="#1"
+            android:id="@+id/rankingValue"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#f5f6f6"
+            android:textStyle="bold"
+            android:textSize="50px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="World Ranking"
+            android:layout_gravity="center_horizontal"
+            android:textSize="30px"
+            android:textColor="#f5f6f6"
+            android:layout_marginBottom="5px" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="10px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Total Clicks: "
+                android:layout_gravity="center_horizontal"
+                android:textSize="30px"
+                android:textColor="#f5f6f6"
+                android:layout_marginBottom="10px"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="50"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30px"
+                android:textColor="#f5f6f6"
+                android:layout_marginBottom="10px" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

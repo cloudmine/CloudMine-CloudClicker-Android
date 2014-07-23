@@ -1,8 +1,71 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="CloudmineTrailTheme" parent="Theme.AppCompat.Light" >
+        <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <style name="CloudmineTrailTheme.EditBoxCredentials">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textColor">#1e3d54</item>
+        <item name="android:textColorHint">#1e3d54</item>
+    </style>
+
+    <style name="CloudmineTrailTheme.BottomBar">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#2982bb</item>
+    </style>
+
+    <style name="CloudmineTrailTheme.BottomBar.Button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">#f5f6f6</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="CloudmineTrailTheme.Button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:textColor">#f5f6f6</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CloudmineTrailTheme.Button.Social" parent="CloudmineTrailTheme.Button">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:drawablePadding">-5sp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="CloudmineTrailTheme.Button.Default" parent="CloudmineTrailTheme.Button">
+        <item name="android:background">@drawable/rounded_button_green</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="CloudmineTrailTheme.Button.White" parent="CloudmineTrailTheme.Button.Default">
+        <item name="android:background">@drawable/rounded_button_white</item>
+        <item name="android:textColor">#59595c</item>
+    </style>
+
+    <style name="CloudmineTrailTheme.Seperator">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">#dde4ea</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
 
 </resources>
