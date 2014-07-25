@@ -6,6 +6,8 @@ import com.cloudmine.api.CMUser;
  * Created by brandon on 6/27/14.
  */
 public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
+    //Class name in the cloudmine database. This variable is Registered in LearningTrailApplication
+    public static final String CLASS_NAME = "CMLTCloud";
 
     //The name of the user
     private String mName;
@@ -33,6 +35,19 @@ public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
         super(email, password);
         this.mName = name;
         this.mClicks = clicks;
+    }
+
+    /**
+     * This is required for serialization and serialization
+     * to function correctly. Class name can be whatever you want
+     * but cannot be the same name of another Cloudmine object and
+     * cannot change otherwise you will loose all prior cloudmine objects
+     *
+     * @return
+     */
+    @Override
+    public String getClassName() {
+        return CLASS_NAME;
     }
 
     /**

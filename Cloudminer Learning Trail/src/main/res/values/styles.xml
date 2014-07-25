@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="CloudmineTrailTheme" parent="Theme.AppCompat.Light" >
+    <style name="CloudmineTrailTheme" parent="" >
         <item name="android:windowContentOverlay">@null</item>
     </style>
 

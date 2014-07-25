@@ -26,8 +26,8 @@ public class LearningTrailApplication extends Application {
         //Initializing the keys in Cloudmine
         Log.d("CLOUDMINE_APPLICATION", "Started Application");
         CMApiCredentials.initialize(KEY_ID, KEY, getApplicationContext());
+        ClassNameRegistry.register(CMLTUser.CLASS_NAME, CMLTUser.class);
         ClassNameRegistry.register(CMLTCloud.CLASS_NAME, CMLTCloud.class);
-
     }
 
     /**
