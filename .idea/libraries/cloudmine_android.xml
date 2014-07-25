@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cloudmine-android">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Cloudminer Learning Trail/libs/cloudmine-android.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

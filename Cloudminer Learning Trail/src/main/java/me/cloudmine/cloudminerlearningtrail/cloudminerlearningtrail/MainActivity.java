@@ -9,6 +9,10 @@ import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.fragments.Lo
 
 public class MainActivity extends CMLTActivity {
 
+    /**
+     * Launches the main Fragment. The fragments handle 90% of th
+     * @param savedInstanceState
+     */
     @Override
     protected void onCloudmineCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);

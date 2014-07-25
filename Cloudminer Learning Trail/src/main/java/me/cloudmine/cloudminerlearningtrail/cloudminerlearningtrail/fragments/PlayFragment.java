@@ -16,6 +16,9 @@ import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTFra
 
 public class PlayFragment extends CMLTFragment {
 
+    /**
+     * Initializing action bar and setting the layout
+     */
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -28,21 +31,30 @@ public class PlayFragment extends CMLTFragment {
         registerOnClickView(R.id.shareBtn);
     }
 
+    /**
+     * Update the users total clicks view. This is ran onResume
+     * because the layout is not inflated until pre-onResume
+     */
     @Override
     public void onResume() {
         super.onResume();
         ((TextView)findViewById(R.id.playTotalClicks)).setText("Your total Clicks: " + getUser().getClicks());
     }
 
+    /**
+     * Play, Top Scores and, Share button are all handled
+     * here
+     * @param view
+     */
     @Override
-    public boolean onViewClick(View view) {
+    public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.playBtn:
                 switchFragment(GameFragment.class);
-                return true;
+                break;
             case R.id.topScoresBtn:
                 switchFragment(TopScoresFragment.class);
-                return true;
+                break;
             case R.id.shareBtn:
                 View inflate = getActivity().getLayoutInflater().inflate(R.layout.share_banner, null);
                 inflate.setDrawingCacheEnabled(true);
@@ -68,11 +80,10 @@ public class PlayFragment extends CMLTFragment {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return true;
+                break;
             case R.id.negativeButton:
                 previousFragment();
-                return true;
+                break;
         }
-        return false;
     }
 }

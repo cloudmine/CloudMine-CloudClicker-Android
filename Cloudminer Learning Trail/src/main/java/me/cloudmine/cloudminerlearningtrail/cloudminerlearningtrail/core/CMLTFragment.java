@@ -16,14 +16,20 @@ import java.util.List;
  */
 public abstract class CMLTFragment extends Fragment implements CMLTSwap {
 
+    //Tag used for logging in the cloudmine fragment
     public final static String TAG = "CLOUDMINE_FRAGMENT";
 
+    //Variables used to remove a large amount of redundant android code.
     private CMLTActivity mActivity;
     private int mLayout, mDrawableTitle;
     private String mPositiveValue, mNegativeValue;
     private boolean mPositiveBold, mNegativeBold;
     private List<Integer> mRegisterViews;
 
+    /**
+     * Public default constructor used to set the default values of
+     * the fragment class
+     */
     public CMLTFragment() {
         this.mLayout = -1;
         this.mPositiveValue = "";
@@ -33,14 +39,28 @@ public abstract class CMLTFragment extends Fragment implements CMLTSwap {
         this.mRegisterViews = new ArrayList<Integer>();
     }
 
-    public abstract boolean onViewClick(View view);
+    /**
+     * Centralizes all of the click events so that they are handled
+     * in one functions and chosen via a switch statement
+     * @param view
+     */
+    public abstract void onViewClick(View view);
 
+    /**
+     * Enables the class to be saved when the fragment
+     * goes to the backstack
+     * @param savedInstance
+     */
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setRetainInstance(true);
     }
 
+    /**
+     * Initialize the action bar and set
+     * the registered views to refer to the onViewClick function
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -63,6 +83,11 @@ public abstract class CMLTFragment extends Fragment implements CMLTSwap {
         }
     }
 
+    /**
+     * Attaches the activity whether it is visible or hidden
+     * Hidden fragments do not have an attached fragment
+     * @param activity
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -73,12 +98,24 @@ public abstract class CMLTFragment extends Fragment implements CMLTSwap {
         this.mActivity = (CMLTActivity) activity;
     }
 
+    /**
+     * Detaches the activity whether it is visible or hidden
+     * Hidden fragments do not have an attached fragment
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         this.mActivity = null;
     }
 
+    /**
+     * This removes a redundant onCreate and was replaced by a function that enables
+     * you to specify your layout
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(mLayout, container, false);
@@ -124,18 +161,39 @@ public abstract class CMLTFragment extends Fragment implements CMLTSwap {
         mActivity.previousFragment();
     }
 
+    /**
+     * Set what views will refer to the onViewClick
+     * Method
+     * @param id
+     */
     public void registerOnClickView(int id) {
        mRegisterViews.add(id);
     }
 
+    /**
+     * Set the layout inflated and returned onViewCreate
+     * Set this on or before the onCreate function
+     * @param layout
+     */
     protected void setLayout(int layout) {
         this.mLayout = layout;
     }
 
+    /**
+     * Get the cloudmine activity attached to the fragment
+     * it will be null if there is no view attached or it does
+     * not inherit from CMLTActivity
+     * @return
+     */
     public CMLTActivity getCloudmine() {
         return mActivity;
     }
 
+    /**
+     * Why is not already a thing?
+     * @param id
+     * @return
+     */
     public View findViewById(int id) {
         return mActivity.findViewById(id);
     }

@@ -30,11 +30,18 @@ public class LearningTrailApplication extends Application {
 
     }
 
-
+    /**
+     * Grabs the global CMLTUser
+     * @return
+     */
     public CMLTUser getUser() {
         return mUser;
     }
 
+    /**
+     * Sets the global CMLTUser
+     * @param user
+     */
     public void setUser(CMLTUser user) {
         this.mUser = user;
     }

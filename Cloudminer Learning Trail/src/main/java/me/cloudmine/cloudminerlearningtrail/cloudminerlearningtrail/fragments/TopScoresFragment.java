@@ -14,7 +14,7 @@ import com.cloudmine.api.rest.response.CMObjectResponse;
 import java.util.Collections;
 import java.util.List;
 
-import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.CMLTAdapter;
+import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTAdapter;
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.R;
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTFragment;
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTUser;
@@ -24,6 +24,9 @@ public class TopScoresFragment extends CMLTFragment {
 
     private ProgressDialog mProgressDialog;
 
+    /**
+     * Initializing action bar and setting the layout
+     */
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -33,6 +36,10 @@ public class TopScoresFragment extends CMLTFragment {
         setLayout(R.layout.fragment_top_scores);
     }
 
+    /**
+     * Pulls all of the users from the database sorts them
+     * and then displays it in a SortedList
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -58,14 +65,18 @@ public class TopScoresFragment extends CMLTFragment {
         });
     }
 
+    /**
+     * Handles a back button
+     * @param view
+     */
     @Override
-    public boolean onViewClick(View view) {
+    public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.negativeButton:
                 previousFragment();
-                return true;
+                break;
             default:
-                return false;
+                break;
         }
     }
 }

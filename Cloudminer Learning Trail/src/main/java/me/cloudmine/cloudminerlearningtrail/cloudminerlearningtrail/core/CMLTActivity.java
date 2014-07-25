@@ -20,24 +20,38 @@ import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.LearningTrai
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.R;
 
 /**
- * This class removes the need to constantly initialize your keys in each activity.
- * If your keys change per activity remove the static final from each variable and
- * re-initialize the keys onCloudmineCreate().
+ * This simplifies using fragments (for my project) and handles a large amount
+ * of android things not relevant in showing usages of the cloudmine api
  */
 public abstract class CMLTActivity extends ActionBarActivity implements CMLTSwap {
 
+    //Tag used for logging in the cloudmine activity
     public final static String TAG = "CLOUDMINE_ACTIVITIY";
 
+    //Instead of recreating fragments we reuse them.
     private Map<Class<? extends CMLTFragment>, CMLTFragment> mFragmentCache;
+    //Prevents the need to keep recreating the mPrams
     private ActionBar.LayoutParams mParams;
 
+    /**
+     * No args construct required by android
+     * Setting the default values for the class
+     */
     protected CMLTActivity() {
         mFragmentCache = new HashMap<Class<? extends CMLTFragment>, CMLTFragment>();
         mParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
     }
 
+    /**
+     * Without this abstract function using the action bar would not function
+     * correcly. Furthermore it is used to set the default fragment
+     */
     protected abstract void onCloudmineCreate(Bundle savedInstanceState);
 
+    /**
+     * Setting up the action bar to allow simple negative and positive
+     * buttons. Also run the onCloudmineCreate Function.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +100,7 @@ public abstract class CMLTActivity extends ActionBarActivity implements CMLTSwap
             throw new NullPointerException("Null fragment instance");
         }
     }
+
 
     @Override
     public void setUser(CMLTUser user) {

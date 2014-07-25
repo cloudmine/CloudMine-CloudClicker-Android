@@ -19,6 +19,9 @@ import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTFra
 
 public class RegisterFragment extends CMLTFragment {
 
+    /**
+     * Initializing action bar and setting the layout
+     */
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -29,8 +32,13 @@ public class RegisterFragment extends CMLTFragment {
         registerOnClickView(R.id.registerButton);
     }
 
+    /**
+     * Register button and Back button are handled here
+     *
+     * @param view
+     */
     @Override
-    public boolean onViewClick(View view) {
+    public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.registerButton:
                 EditText name = (EditText) findViewById(R.id.registerName);
@@ -50,7 +58,7 @@ public class RegisterFragment extends CMLTFragment {
                 }
 
                 if (failed || hasValue(name, email, password, passwordRetype)) {
-                    return false;
+                    return;
                 }
 
                 final ProgressDialog pdia = new ProgressDialog(getCloudmine());
@@ -81,15 +89,20 @@ public class RegisterFragment extends CMLTFragment {
                         Log.e(TAG, "Failed to register user", volleyError);
                     }
                 });
-                return true;
+                break;
             case R.id.negativeButton:
                 previousFragment();
-                return true;
+                break;
             default:
-                return false;
+                break;
         }
     }
 
+    /**
+     * Do any of the register views have a empty value
+     * @param textViews
+     * @return
+     */
     private boolean hasValue(TextView... textViews) {
         boolean failed = false;
         for (TextView textView : textViews) {

@@ -30,6 +30,9 @@ public class LoginFragment extends CMLTFragment {
     private ProgressDialog mProgressDialog;
     private Long mDelay = -1l;
 
+    /**
+     * Initializing action bar and setting the layout
+     */
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -46,14 +49,23 @@ public class LoginFragment extends CMLTFragment {
         }
     }
 
+    /**
+     * Save the forgot password value to cache
+     * @param savedInstanceState
+     */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putLong("mDelay", mDelay);
     }
 
+    /**
+     * Handles the emailLogin, negative action bar, positive action bar, facebook and google login
+     * button clicks
+     * @param view
+     */
     @Override
-    public boolean onViewClick(final View view) {
+    public void onViewClick(final View view) {
         switch (view.getId()) {
             case R.id.emailLogin:
                 EditText loginView = (EditText) findViewById(R.id.loginEmail);
@@ -71,7 +83,7 @@ public class LoginFragment extends CMLTFragment {
                     hadError = true;
                 }
                 if (hadError) {
-                    return true;
+                    return;
                 }
 
                 mProgressDialog = new ProgressDialog(getCloudmine());
@@ -94,35 +106,35 @@ public class LoginFragment extends CMLTFragment {
                         Log.e(TAG, "Failed to login", volleyError);
                     }
                 });
-                return true;
+                break;
             case R.id.facebookLogin:
                 mProgressDialog = new ProgressDialog(getCloudmine());
                 mProgressDialog.setMessage("Loading...");
                 mProgressDialog.show();
                 loginSocial();
-                return true;
+                break;
             case R.id.googlePlusLogin:
                 mProgressDialog = new ProgressDialog(getCloudmine());
                 mProgressDialog.setMessage("Loading...");
                 mProgressDialog.show();
                 loginSocial();
-                return true;
+                break;
             case R.id.postiveButton:
                 switchFragment(RegisterFragment.class);
-                return true;
+                break;
             case R.id.negativeButton:
                 EditText lView = (EditText) findViewById(R.id.loginEmail);
                 String lEmail = lView.getText().toString();
                 if (lEmail.length() <= 0 || !android.util.Patterns.EMAIL_ADDRESS.matcher(lEmail).matches()) {
                     lView.setError("Invalid email address");
                     Log.d(TAG, "Invalid email address");
-                    return true;
+                    break;
                 }
                 if (mDelay >= System.currentTimeMillis()) {
                     Toast.makeText(getActivity(), "Please wait " + (((mDelay - System.currentTimeMillis()) / 1000) / 60)
                             + "minutes (s) before resetting your email!", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Sent reset email request");
-                    return true;
+                    break;
                 }
                 mDelay = System.currentTimeMillis() + 1800000;
                 new CMUser(lEmail, "").resetPasswordRequest(new Callback<CMResponse>() {
@@ -148,13 +160,18 @@ public class LoginFragment extends CMLTFragment {
                         return 0;
                     }
                 });
-                return true;
+                break;
             default:
-                return false;
+                break;
         }
     }
 
+    /**
+     * Cloudmine function to clear the pervious session cookies
+     * and log into a social media network. Facebook in this scenario
+     */
     private void loginSocial() {
+        CMAndroidSocial.clearSessionCookies(getActivity());
         CMAndroidSocial.loginThroughSocial(CMSocial.Service.FACEBOOK, getActivity(), new Callback<CMSocialLoginResponse>() {
             @Override
             public void onCompletion(CMSocialLoginResponse cmSocialLoginResponse) {
@@ -181,12 +198,21 @@ public class LoginFragment extends CMLTFragment {
         });
     }
 
+    /**
+     * When a request returns a user lets handle it here
+     * @param user
+     */
     private void onReponseUser(CMLTUser user) {
         mProgressDialog.dismiss();
         setUser(user);
         switchFragment(PlayFragment.class);
     }
 
+    /**
+     * When a user attempts to login but it fails
+     * we handle it here. Reducing code redundancy
+     * @param error
+     */
     private void onFailed(int error) {
         mProgressDialog.dismiss();
         AlertDialog.Builder builder = new AlertDialog.Builder(getCloudmine())

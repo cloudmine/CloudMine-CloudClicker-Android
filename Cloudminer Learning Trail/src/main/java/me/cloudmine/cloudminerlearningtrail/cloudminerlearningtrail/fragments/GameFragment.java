@@ -29,8 +29,12 @@ import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTFra
 
 public class GameFragment extends CMLTFragment {
 
+    //List of cloud click listeners
     private List<OnCloudClickListener> mClickListenerList;
 
+    /**
+     * Initializing action bar and setting the layout
+     */
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -40,6 +44,12 @@ public class GameFragment extends CMLTFragment {
         setLayout(R.layout.fragment_game);
     }
 
+    /**
+     * After the view has been create this adds clouds onto the
+     * horizontal list view and starts a Object query request to match
+     * each database object to an object in a list view
+     * The query searches for only a CMLTCloud class type
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -74,6 +84,10 @@ public class GameFragment extends CMLTFragment {
     }
 
 
+    /**
+     * Updates the users total clicks along with
+     * all of the clouds total clicks.
+     */
     @Override
     public void onStop() {
         for (OnCloudClickListener listener : mClickListenerList) {
@@ -93,17 +107,29 @@ public class GameFragment extends CMLTFragment {
         super.onStop();
     }
 
+    /**
+     * Sends a user to the previous fragment if the negative button is clicked
+     * @param view
+     */
     @Override
-    public boolean onViewClick(View view) {
+    public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.negativeButton:
                 previousFragment();
-                return true;
+                break;
             default:
-                return false;
+                break;
         }
     }
 
+    /**
+     * Adds a cloud to the horizontal list group
+     * It also adds the OnCloudClickListener so when a
+     * cloud is click it increments the cloud and the user
+     * @param group
+     * @param drawableID
+     * @param id
+     */
     private void addCloud(ViewGroup group, int drawableID, String id) {
         final View inflate = getActivity().getLayoutInflater().inflate(R.layout.cloudview, null);
         assert inflate != null;
@@ -114,9 +140,14 @@ public class GameFragment extends CMLTFragment {
         group.addView(inflate);
     }
 
+    /**
+     * Private class for increasing the users and clouds total
+     */
     private class OnCloudClickListener implements View.OnClickListener {
 
+        //The Cloudmine LocallySavable to send the total to the database later
         protected CMLTCloud cmltCloud;
+        //Instance of the view to update the total visually
         private View view;
 
         public OnCloudClickListener(String id, View view) {
@@ -124,6 +155,12 @@ public class GameFragment extends CMLTFragment {
             this.cmltCloud = new CMLTCloud(id);
         }
 
+        /**
+         * When the cloud is clicked the phone will vibrate for 50 milliseconds,
+         * increments the cloud total and increments the users total then finally
+         * logs the updated value
+         * @param view
+         */
         @Override
         public void onClick(View view) {
             Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
@@ -137,6 +174,11 @@ public class GameFragment extends CMLTFragment {
             Log.d(TAG, "Cloud: " + cmltCloud.getCMLTID() + " Clicks: " + cmltCloud.getClicks());
         }
 
+        /**
+         * Updates the total click amount and is synchronized because there is a very
+         * small chance where cloudmine sends the callback and updates the click the exact
+         * same time the user is finishing clicking the cloud
+         */
         protected synchronized void updateClicks() {
             if (view == null) {
                 return;

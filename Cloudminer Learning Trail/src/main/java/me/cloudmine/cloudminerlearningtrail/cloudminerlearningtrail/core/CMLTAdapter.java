@@ -1,4 +1,4 @@
-package me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail;
+package me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.R;
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTUser;
 
 /**
