@@ -3,6 +3,7 @@ package me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.fragments;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -77,6 +78,7 @@ public class RegisterFragment extends CMLTFragment {
                             builder.setMessage("Unable register your account.");
                         }
                         builder.show();
+                        Log.e(TAG, "Failed to register user", volleyError);
                     }
                 });
                 return true;

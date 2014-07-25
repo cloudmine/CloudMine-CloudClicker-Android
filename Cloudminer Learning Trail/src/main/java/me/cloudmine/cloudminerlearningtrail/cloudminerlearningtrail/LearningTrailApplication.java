@@ -1,6 +1,7 @@
 package me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.cloudmine.api.CMApiCredentials;
 import com.cloudmine.api.persistance.ClassNameRegistry;
@@ -23,7 +24,7 @@ public class LearningTrailApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //Initializing the keys in Cloudmine
-        System.out.println("LAUNCHED APPLICATION");
+        Log.d("CLOUDMINE_APPLICATION", "Started Application");
         CMApiCredentials.initialize(KEY_ID, KEY, getApplicationContext());
         ClassNameRegistry.register(CMLTCloud.CLASS_NAME, CMLTCloud.class);
 

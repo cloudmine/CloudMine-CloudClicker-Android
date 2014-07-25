@@ -5,7 +5,7 @@ import com.cloudmine.api.CMUser;
 /**
  * Created by brandon on 6/27/14.
  */
-public class CMLTUser extends CMUser {
+public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
 
     private String mName;
     private int mClicks;
@@ -42,5 +42,10 @@ public class CMLTUser extends CMUser {
 
     public void click() {
         this.mClicks++;
+    }
+
+    @Override
+    public int compareTo(CMLTUser cmltUser) {
+        return Integer.compare(mClicks, cmltUser.getClicks());
     }
 }

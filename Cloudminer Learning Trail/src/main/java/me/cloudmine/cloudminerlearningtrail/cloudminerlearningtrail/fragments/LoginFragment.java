@@ -159,12 +159,14 @@ public class LoginFragment extends CMLTFragment {
             @Override
             public void onCompletion(CMSocialLoginResponse cmSocialLoginResponse) {
                 onReponseUser((CMLTUser) cmSocialLoginResponse.getUser());
+                Log.d(TAG, "Successfully logged through social media");
             }
 
             @Override
             public void onFailure(Throwable throwable, String s) {
                 throwable.printStackTrace();
                 onFailed(999);
+                Log.e(TAG, "Failed to login through social media", throwable);
             }
 
             @Override

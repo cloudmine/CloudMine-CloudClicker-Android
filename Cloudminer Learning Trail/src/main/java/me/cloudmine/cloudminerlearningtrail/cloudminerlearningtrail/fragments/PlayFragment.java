@@ -59,8 +59,6 @@ public class PlayFragment extends CMLTFragment {
                     fos.flush();
                     fos.close();
 
-                    System.out.println(file.exists() + ":" + file.length());
-
                     Intent shareIntent = new Intent();
                     shareIntent.setAction(Intent.ACTION_SEND);
                     shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
