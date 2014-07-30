@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CloudmineTrailTheme.BottomBar"
-    tools:context="me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.BottomActionBarFragment">
+    tools:context="me.cloudmine.cloudminerlearningtrail.BottomActionBarFragment">
 
     <Button
         android:id="@+id/negativeButton"
