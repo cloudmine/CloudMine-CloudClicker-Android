@@ -56,9 +56,8 @@ public class GameFragment extends CMLTFragment {
         mClickListenerList = new ArrayList<OnCloudClickListener>();
         LinearLayout llcw = (LinearLayout) findViewById(R.id.linearLayoutCloudView);
         llcw.removeAllViews();
-        addCloud(llcw, R.drawable.cloud_blue, "bluecloud");
-        //addCloud(llcw, R.drawable.cloud_white, "whitecloud");
-        addCloud(llcw, R.drawable.cloud_red, "redcloud");
+        addCloud(llcw, CloudType.BLUE_CLOUD);
+        addCloud(llcw, CloudType.RED_CLOUD);
 
         LocallySavableCMObject.searchObjects(getActivity(), SearchQuery.filter(CMLTCloud.class).searchQuery(), new Response.Listener<CMObjectResponse>() {
             @Override
@@ -70,7 +69,7 @@ public class GameFragment extends CMLTFragment {
                 }
                 for (CMLTCloud cl : clouds) {
                     for (OnCloudClickListener l : mClickListenerList) {
-                        if (!l.cmltCloud.getCMLTID().equalsIgnoreCase(cl.getCMLTID())) {
+                        if (!l.cmltCloud.getID().equalsIgnoreCase(cl.getID())) {
                             continue;
                         }
                         synchronized (l.cmltCloud) {
@@ -127,16 +126,15 @@ public class GameFragment extends CMLTFragment {
      * It also adds the OnCloudClickListener so when a
      * cloud is click it increments the cloud and the user
      * @param group
-     * @param drawableID
-     * @param id
+     * @param type
      */
-    private void addCloud(ViewGroup group, int drawableID, String id) {
+    private void addCloud(ViewGroup group, CloudType type) {
         final View inflate = getActivity().getLayoutInflater().inflate(R.layout.cloudview, null);
         assert inflate != null;
-        OnCloudClickListener clickListener = new OnCloudClickListener(id, inflate);
+        OnCloudClickListener clickListener = new OnCloudClickListener(type.id, inflate);
         mClickListenerList.add(clickListener);
         inflate.setOnClickListener(clickListener);
-        ((ImageView) inflate.findViewById(R.id.cloudView)).setImageDrawable(getResources().getDrawable(drawableID));
+        ((ImageView) inflate.findViewById(R.id.cloudView)).setImageDrawable(getResources().getDrawable(type.drawable));
         group.addView(inflate);
     }
 
@@ -169,9 +167,13 @@ public class GameFragment extends CMLTFragment {
             Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(50);
             cmltCloud.click();
-            getUser().click();
+            if (cmltCloud.getID().equals(CloudType.RED_CLOUD.id)) {
+                getUser().clickRed();
+            } else if (cmltCloud.getID().equals(CloudType.BLUE_CLOUD.id)) {
+                getUser().clickBlue();
+            }
             updateClicks();
-            Log.d(TAG, "Cloud: " + cmltCloud.getCMLTID() + " Clicks: " + cmltCloud.getClicks());
+            Log.d(TAG, "Cloud: " + cmltCloud.getID() + " Clicks: " + cmltCloud.getClicks());
         }
 
         /**
@@ -185,6 +187,19 @@ public class GameFragment extends CMLTFragment {
             }
             ((TextView)view.findViewById(R.id.clicksCounter)).setText("Clicks: " + cmltCloud.getClicks());
             ((TextView)findViewById(R.id.totalClicks)).setText("Your total Clicks: " + getUser().getClicks());
+        }
+    }
+
+    private enum CloudType {
+        RED_CLOUD("redcloud", R.drawable.cloud_red),
+        BLUE_CLOUD("bluecloud", R.drawable.cloud_blue);
+
+        public final String id;
+        public final int drawable;
+
+        CloudType(String id, int drawable) {
+            this.id = id;
+            this.drawable = drawable;
         }
     }
 }

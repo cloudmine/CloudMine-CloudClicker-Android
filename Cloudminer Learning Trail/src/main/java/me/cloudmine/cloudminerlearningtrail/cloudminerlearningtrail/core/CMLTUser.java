@@ -7,12 +7,12 @@ import com.cloudmine.api.CMUser;
  */
 public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
     //Class name in the cloudmine database. This variable is Registered in LearningTrailApplication
-    public static final String CLASS_NAME = "CMLTCloud";
+    public static final String CLASS_NAME = "CMLTUser";
 
     //The name of the user
     private String mName;
-    //How many times has the user clicked
-    private int mClicks;
+    //How many times has the user clicked and the user specific cloud clicks
+    private int mClicks, mRedClicks, mBlueClicks;
 
     /**
      * THIS IS REQUIRED!!!!!
@@ -73,6 +73,34 @@ public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
      * @return
      */
     public Integer getClicks() {return mClicks;}
+
+    public Integer getRed() {
+        return mRedClicks;
+    }
+
+    public void setRed(int clicks) {
+        this.mRedClicks = clicks;
+        click();
+    }
+
+    public void clickRed() {
+        mRedClicks++;
+    }
+
+    public Integer getBlue() {
+        return mBlueClicks;
+    }
+
+    public void setBlue(int clicks) {
+        this.mBlueClicks = clicks;
+    }
+
+
+    public void clickBlue() {
+        mBlueClicks++;
+        click();
+    }
+
 
     /**
      * Sets the users clicks and is required for de-serialization to

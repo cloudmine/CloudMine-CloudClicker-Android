@@ -23,13 +23,13 @@ public class CMLTCloud extends LocallySavableCMObject {
         super();
     }
 
-    public CMLTCloud(String cmltID) {
-        this(cmltID, 0);
+    public CMLTCloud(String id) {
+        this(id, 0);
     }
 
-    public CMLTCloud(String cmltID, int clicks) {
+    public CMLTCloud(String id, int clicks) {
         this();
-        this.mCMLTID = cmltID;
+        this.mCMLTID = id;
         this.mClicks = clicks;
     }
 
@@ -51,7 +51,7 @@ public class CMLTCloud extends LocallySavableCMObject {
      * function correctly. Being public is important to serialization
      * @return
      */
-    public String getCMLTID() {
+    public String getID() {
         return mCMLTID;
     }
 
@@ -60,7 +60,7 @@ public class CMLTCloud extends LocallySavableCMObject {
      * function correctly. Being public is important to de-serialization
      * @param mCMLTID
      */
-    public void setCMLTID(String mCMLTID) {
+    public void setID(String mCMLTID) {
         this.mCMLTID = mCMLTID;
     }
 
