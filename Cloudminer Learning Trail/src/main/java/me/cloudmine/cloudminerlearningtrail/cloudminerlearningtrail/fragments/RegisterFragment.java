@@ -65,7 +65,7 @@ public class RegisterFragment extends CMLTFragment {
                 pdia.setMessage("Loading...");
                 pdia.show();
 
-                final CMLTUser user = new CMLTUser(name.getText().toString(), email.getText().toString(), password.getText().toString());
+                final CMLTUser user = new CMLTUser(email.getText().toString(), name.getText().toString(), password.getText().toString());
                 user.create(getCloudmine(), new Response.Listener<CreationResponse>() {
                     @Override
                     public void onResponse(CreationResponse creationResponse) {

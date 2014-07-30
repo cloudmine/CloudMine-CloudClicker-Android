@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.R;
-import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTUser;
 
 /**
  * Created by brandon on 7/18/14.

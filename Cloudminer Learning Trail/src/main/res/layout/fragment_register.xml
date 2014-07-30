@@ -14,7 +14,7 @@
         <EditText
             android:id="@+id/registerName"
             style="@style/CloudmineTrailTheme.EditBoxCredentials"
-            android:hint="Full Name"
+            android:hint="Username"
             android:inputType="textPersonName" />
 
         <View style="@style/CloudmineTrailTheme.Seperator" />

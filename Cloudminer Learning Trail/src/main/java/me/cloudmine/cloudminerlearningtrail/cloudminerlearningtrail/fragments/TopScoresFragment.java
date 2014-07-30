@@ -14,8 +14,8 @@ import com.cloudmine.api.rest.response.CMObjectResponse;
 import java.util.Collections;
 import java.util.List;
 
-import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTAdapter;
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.R;
+import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTAdapter;
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTFragment;
 import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTUser;
 

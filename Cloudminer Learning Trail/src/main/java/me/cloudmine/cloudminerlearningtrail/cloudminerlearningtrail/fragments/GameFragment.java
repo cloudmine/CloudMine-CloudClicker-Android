@@ -69,7 +69,7 @@ public class GameFragment extends CMLTFragment {
                 }
                 for (CMLTCloud cl : clouds) {
                     for (OnCloudClickListener l : mClickListenerList) {
-                        if (!l.cmltCloud.getID().equalsIgnoreCase(cl.getID())) {
+                        if (!l.cmltCloud.getcmid().equalsIgnoreCase(cl.getcmid())) {
                             continue;
                         }
                         synchronized (l.cmltCloud) {
@@ -167,13 +167,13 @@ public class GameFragment extends CMLTFragment {
             Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(50);
             cmltCloud.click();
-            if (cmltCloud.getID().equals(CloudType.RED_CLOUD.id)) {
+            if (cmltCloud.getcmid().equals(CloudType.RED_CLOUD.id)) {
                 getUser().clickRed();
-            } else if (cmltCloud.getID().equals(CloudType.BLUE_CLOUD.id)) {
+            } else if (cmltCloud.getcmid().equals(CloudType.BLUE_CLOUD.id)) {
                 getUser().clickBlue();
             }
             updateClicks();
-            Log.d(TAG, "Cloud: " + cmltCloud.getID() + " Clicks: " + cmltCloud.getClicks());
+            Log.d(TAG, "Cloud: " + cmltCloud.getcmid() + " Clicks: " + cmltCloud.getClicks());
         }
 
         /**

@@ -1,5 +1,7 @@
 package me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core;
 
+import android.os.Build;
+
 import com.cloudmine.api.CMUser;
 
 /**
@@ -9,10 +11,10 @@ public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
     //Class name in the cloudmine database. This variable is Registered in LearningTrailApplication
     public static final String CLASS_NAME = "CMLTUser";
 
-    //The name of the user
-    private String mName;
     //How many times has the user clicked and the user specific cloud clicks
     private int mClicks, mRedClicks, mBlueClicks;
+    //Chaching the user name to be public
+    private String name;
 
     /**
      * THIS IS REQUIRED!!!!!
@@ -20,21 +22,21 @@ public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
      * otherwise de-serialization will fail
      */
     public CMLTUser() {
-        this(null, null);
+        this(null, null, null);
     }
 
     public CMLTUser(String email, String password) {
-        this(null, email, password);
+        this(email, null, password, 0);
     }
 
-    public CMLTUser(String name, String email, String password) {
-        this(name, email, password, 0);
+    public CMLTUser(String email, String username, String password) {
+        this(email, username, password, 0);
 
     }
-    public CMLTUser(String name, String email, String password, int clicks) {
-        super(email, password);
-        this.mName = name;
+    public CMLTUser(String email, String username, String password, int clicks) {
+        super(email, username, password);
         this.mClicks = clicks;
+        this.name = username;
     }
 
     /**
@@ -48,23 +50,6 @@ public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
     @Override
     public String getClassName() {
         return CLASS_NAME;
-    }
-
-    /**
-     * Get the users name and is required for serialization to
-     * function correctly. Being public is important to serialization
-     * @return
-     */
-    public String getName() {
-        return mName;
-    }
-
-    /**
-     * Sets the users name and is required for de-serialization to
-     * function correctly. Being public is important to de-serialization
-     */
-    public void setName(String mName) {
-        this.mName = mName;
     }
 
     /**
@@ -95,6 +80,14 @@ public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
         this.mBlueClicks = clicks;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+
+    }
 
     public void clickBlue() {
         mBlueClicks++;
@@ -117,6 +110,10 @@ public class CMLTUser extends CMUser implements Comparable<CMLTUser> {
 
     @Override
     public int compareTo(CMLTUser cmltUser) {
-        return Integer.compare(mClicks, cmltUser.getClicks());
+        if (Build.VERSION.SDK_INT < 11) {
+            return Integer.compare(mClicks, cmltUser.getClicks());
+        } else {
+            return (mClicks<cmltUser.getClicks() ? -1 : (mClicks==cmltUser.getClicks() ? 0 : 1));
+        }
     }
 }

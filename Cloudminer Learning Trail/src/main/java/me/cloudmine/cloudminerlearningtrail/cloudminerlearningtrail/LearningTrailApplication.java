@@ -14,9 +14,9 @@ import me.cloudmine.cloudminerlearningtrail.cloudminerlearningtrail.core.CMLTUse
  */
 public class LearningTrailApplication extends Application {
     //This is your KEY available on the dashboard
-    public static final String KEY =  "b94ba211089b4acb8b61a902cf64cc19";
+    public static final String KEY =  "aa6aeecb10e2407b8e1b2ea866b418ef";
     //This is your id also available on the dashboard
-    public static final String KEY_ID = "a9abfaa749ed4122affb3661112ea888";
+    public static final String KEY_ID = "33a972520cb447bda768b5d93ceb266f";
 
     private CMLTUser mUser;
 
