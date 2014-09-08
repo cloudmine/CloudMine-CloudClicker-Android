@@ -67,15 +67,15 @@ public class GameFragment extends CMLTFragment {
                     Log.e(TAG, "No Cloud objects returned");
                     return;
                 }
-                for (CMLTCloud cl : clouds) {
-                    for (OnCloudClickListener l : mClickListenerList) {
-                        if (!l.cmltCloud.getCmid().equalsIgnoreCase(cl.getCmid())) {
+                for (CMLTCloud cmltCloud : clouds) {
+                    for (OnCloudClickListener cloudClickListener : mClickListenerList) {
+                        if (!cloudClickListener.cmltCloud.getCmid().equalsIgnoreCase(cmltCloud.getCmid())) {
                             continue;
                         }
-                        synchronized (l.cmltCloud) {
-                            l.cmltCloud = cl;
+                        synchronized (cloudClickListener.cmltCloud) {
+                            cloudClickListener.cmltCloud = cmltCloud;
                         }
-                        l.updateClicks();
+                        cloudClickListener.updateClicks();
                     }
                 }
             }
