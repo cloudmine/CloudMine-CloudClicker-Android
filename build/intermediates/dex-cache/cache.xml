@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-542dfd9dc846ac72518c428a86ee50770e182db0.jar"
+        jar="/Applications/Programming/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/pre-dexed/debug/classes-8c8037474105cc509a69b8e6f22c4a2d2e63c320.jar"
+        jar="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/pre-dexed/debug/classes-524dd2c2039df486bf04ddbe73f1ed7e70795a7a.jar"
+        jar="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+    <item
+        dex="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-86f12eb6907e5a7fe22f72fcfe8586921f6d9909.jar"
+        jar="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/build/intermediates/pre-dexed/debug/cloudmine-android-v0.6.3-696654aa9c3652d0c7d065594ca23074a275caeb.jar"
+        jar="/Users/brandon/Programming/Cloudmine/CloudmineLearningTrail/app/libs/cloudmine-android-v0.6.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="644387b1e4bf898856804696f74c8950e199423d"/>
+
+</pre-dex-items>

@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="0"
+    android:orientation="vertical"
+    tools:context="me.cloudmine.cloudminerlearningtrail.fragments.LoginFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#f5f6f6"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/loginEmail"
+            style="@style/CloudmineTrailTheme.EditBoxCredentials"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress" />
+
+        <View style="@style/CloudmineTrailTheme.Seperator" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            style="@style/CloudmineTrailTheme.EditBoxCredentials"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/emailLogin"
+        style="@style/CloudmineTrailTheme.Button.Default"
+        android:text="Log in" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:text="or"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#77caff"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/facebookLogin"
+            style="@style/CloudmineTrailTheme.Button.Social"
+            android:layout_marginRight="3dp"
+            android:background="#3b5998"
+            android:drawableStart="@drawable/ic_facebook"
+            android:text="Facebook" />
+
+        <Button
+            android:id="@+id/googlePlusLogin"
+            style="@style/CloudmineTrailTheme.Button.Social"
+            android:layout_marginLeft="3dp"
+            android:background="#dd4b39"
+            android:drawableStart="@drawable/ic_google_plus"
+            android:text="Google" />
+    </LinearLayout>
+
+</LinearLayout>
